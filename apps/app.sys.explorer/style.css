@@ -19,18 +19,24 @@ body{
 }
 
 .startmenu{
+    display: inline-flex;
     background-color: #212121;
     font-family: sans-serif;
     color: #fff;
     position: absolute;
-    top: -500px;
+    top: -700px;
     left: 12px;
     font-size: large;
     padding: 8px;
     border: 0;
     border-radius: 20px;
-    width: 300px;
+    width: 600px;
     transition: all 0.3s ease-in; 
+}
+
+#pane1{
+    display: block;
+    width: 300px;
 }
 
 #list div{
@@ -59,6 +65,7 @@ body{
     padding: 4px;
     display: flex;
     text-align: center;
+    height: 50px;
 }
 
 .startmenu input{
@@ -80,8 +87,8 @@ body{
     width: 200px;
 }
 
-.br-os-window {
-    display: flex;
+.window {
+    display: none;
     flex-direction: column;
     width: 60%;
     height: 60vh;
@@ -94,7 +101,7 @@ body{
     resize: both;
     transition: 0.3s;
 }
-.br-os-window .window-bar {
+.window .window-bar {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -105,29 +112,29 @@ body{
     cursor: -moz-grab;
     cursor: -webkit-grab;
 }
-.br-os-window .window-bar:active {
+.window .window-bar:active {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
 }
-.br-os-window .window-bar .brand {
+.window .window-bar .brand {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.br-os-window .window-bar .brand img {
+.window .window-bar .brand img {
     width: 32px;
 }
-.br-os-window .window-bar .brand p {
+.window .window-bar .brand p {
     color: rgb(73, 0, 0);
     margin-left: 10px;
 }
-.br-os-window .window-bar .brand .buttons {
+.window .window-bar .brand .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.br-os-window .window-bar .brand .buttons button {
+.window .window-bar .brand .buttons button {
     border: none;
     outline: none;
     margin-right: 5px;
@@ -139,26 +146,55 @@ body{
     cursor: pointer;
     transition: 0.2s;
 }
-.br-os-window .window-bar .brand .buttons button:first-child {
+.window .window-bar .brand .buttons button:first-child {
     background: rgb(3, 82, 0);
 }
-.br-os-window .window-bar .brand .buttons button:nth-child(2) {
+.window .window-bar .brand .buttons button:nth-child(2) {
     background: rgb(59, 0, 82);
 }
-.br-os-window .window-bar .brand .buttons button:nth-child(3) {
+.window .window-bar .brand .buttons button:nth-child(3) {
     background: rgb(121, 45, 1);
 }
-.br-os-window .window-bar .brand .buttons button:last-child {
+.window .window-bar .brand .buttons button:last-child {
     background: rgb(255, 43, 43);
     margin-right: 0;
 }
-.br-os-window .window-bar .brand .buttons button:hover {
+.window .window-bar .brand .buttons button:hover {
     background: rgb(182, 182, 182);
     color: rgb(255, 43, 43);
 }
-.br-os-window .app {
+.window .app {
     width: 100%;
     height: 100%;
     background: #FFF;
     overflow: auto;
+}
+
+#metro-array {
+ margin-left: auto;
+ margin-right: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 710px;
+  margin-top: 30px;
+}
+
+.wrapper {
+ width: 230px;
+ height: 230px;
+ float: left;
+}
+
+.metro-tile {
+  cursor: pointer;
+  background-color: deepSkyBlue;
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  text-indent: 4px;
+}
+
+#pane2{
+    padding: 16px;
 }

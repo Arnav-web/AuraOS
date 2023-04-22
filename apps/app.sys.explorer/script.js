@@ -1,211 +1,236 @@
-//ELements
-const apps = document.querySelector("#br-os-apps")
-var menu = document.querySelector("#os-ct-menu")
-const os_window = document.querySelector(".br-os-window")
-const brand_window = document.querySelector(".brand")
-const app_main = document.querySelector ("#app-main")
-const maximise = document.querySelector("#maximise")
-const shorter = document.querySelector("#shorter")
-const cross = document.querySelector("#cross")
-const taskbar = document.querySelector ("#taskbarold")
-/* Sound effects */
-const click = new Audio("assets/music/click.wav")
-const con = new Audio("assets/music/alert.wav")
-const okay = new Audio("assets/music/positive.wav")
-const no = new Audio("assets/music/negative.wav")
+/*
+ * Metro-tiles:  Css3 windows metro tiles
+ * Author     :  Tim Holman
+ * @Author    :  @twholman
+ * Get this on github: https://github.com/tholman/tileJs
+ */
 
-//Operations
-/* Reseting window */
-close(os_window)
-/* Creating apps */
-create_app("File manager", 'assets/images/apps/file-manager.png', "file-manager")
-create_app("Recycle bin", "assets/images/apps/recycle-bin.png", "recycle-bin")
-create_app ("Settings", "assets/images/apps/settings.png", "settings")
-create_app("System Info", "assets/images/apps/system-information.png", "system-info")
+function Tile( element ){
+	
+	// Tile element	
+	var tile = element;
 
-//Functions
+	// Global settings
 
-function create_app (name, image, id) {
-    let app = document.createElement("div")
-    app.classList.add("app")
-    app.id = id
-    app.setAttribute("onclick", "window_open('" + id + "')")
-    app.oncontextmenu = e => {
-        click.play()
-        open_menu(e, id)
-    }
+	// Declare css for when the tile is in its idle state.
+    var idleCss = "rotateX( 0deg ) rotateY( 0deg ) translateZ( 0px )";
 
-    let img = document.createElement("img")
-    img.src = image
-    img. setAttribute("alt", name)
-    let p = document.createElement("p")
-    p.innerText = name
-    app.appendChild (img)
-    app.appendChild (p)
-    apps.appendChild (app)
+
+	var initialize = function() {
+
+		// Set transform origin to the center of the element.
+		tile.style.webkitTransformOrigin = "50% 50%";
+		tile.style.MozTransformOrigin = "50% 50%";
+		tile.style.msTransformOrigin = "50% 50%";
+		tile.style.oTransformOrigin = "50% 50%";
+		tile.style.transformOrigin = "50% 50%";
+
+		// Make sure the parent preserves the 3d perspective
+		tile.parentElement.style.webkitTransformStyle = "preserve-3d";
+		tile.parentElement.style.MozTransformStyle = "preserve-3d";
+		tile.parentElement.style.msTransformStyle = "preserve-3d";
+		tile.parentElement.style.oTransformStyle = "preserve-3d";
+		tile.parentElement.style.transformStyle = "preserve-3d";
+
+		// Set element transform times
+		tile.style.webkitTransition = "-webkit-transform 0.08s";
+		tile.style.MozTransition = "-moz-transform 0.08s";
+		tile.style.msTransition = "-ms-transform 0.08s";
+		tile.style.oTransition = "-o-transform 0.08s";
+		tile.style.transition = "transform 0.08s";
+
+		// This gives an antialiased effect for transforms in firefox.
+		tile.style.outline = "1px solid transparent";
+
+		// Font smoothing for webkit.
+		tile.style.webkitFontSmoothing = "antialiased";
+
+		// Listen to mouse events for the tile.
+		tile.addEventListener('mousedown', MouseDown, false);
+		
+	}
+
+
+	var pushTile = function( x, y ){
+
+		// Get the elements width and height.
+		var width = tile.offsetWidth;
+		var height = tile.offsetHeight;
+
+		var translateString = "perspective( 800px ) ";
+		
+
+		/*  Tilt based on position clicked
+		 *  
+		 *  Not quite sure how msft do this, but here's my logic:
+		 *
+		   *  If the click is closer to the left, right, top or bottom:
+		   *    Then tilt in that direction
+		   *
+		   *  Unless the click is in the middle quater of the tile:
+		   *    In which case, push the tile down.
+		   *
+		 */
+
+		// If the click is in the center quater of the element, push down.
+		if ( x > width/4 && x < (width/4 * 3) && y > height/4 && y < (height/4 * 3) ) {
+
+			translateString += "rotateX( 0deg ) rotateY( 0deg ) translateZ( -30px )";
+		}
+		
+		// is the user closer to the right/left hand side?
+		else if ( Math.min( x, width - x) < Math.min( y, height - y) ) {
+
+			// Tilt on the left side
+			if ( x < width - x ) {
+
+				translateString += "rotateX( 0deg ) rotateY( -20deg ) translateZ( 0px )";
+
+			// Tilt on the right side
+			} else {
+
+				translateString += "rotateX( 0deg ) rotateY( 20deg ) translateZ( 0px )";
+			}
+
+		// the user is closer to the top/bottom side (also the default)
+		} else {
+
+			// Tilt on the top
+			if ( y < height - y ) {
+
+				translateString += "rotateX( 20deg ) rotateY( 0deg ) translateZ( 0px )";
+
+			// Tilt on the bottom
+			} else {
+
+				translateString += "rotateX( -20deg ) rotateY( 0deg ) translateZ( 0px )";
+			}
+		}
+
+		// Apply transformation to tile.
+		tile.style.webkitTransform = translateString;
+		tile.style.MozTransform = translateString;
+		tile.style.msTransform = translateString;
+		tile.style.oTransform = translateString;
+		tile.style.transform = translateString;
+
+		document.addEventListener('mouseup',   MouseUp,   false);    
+
+	};
+	
+	var MouseDown = function( event ){
+
+		// Chrome
+		if ( event.offsetX ) {
+			pushTile( event.offsetX, event.offsetY );
+			return;
+		}
+
+		// Non offsetX browsers
+		var tilePosition = elementPosition( tile );
+		var x = event.pageX - tilePosition.x;
+		var y = event.pageY - tilePosition.y;
+		
+		pushTile( x, y );
+		
+	};
+	
+
+	var MouseUp = function( event ){
+
+		// Set the element to its idle state
+		tile.style.webkitTransform = idleCss;
+		tile.style.MozTransform = idleCss;
+		tile.style.msTransform = idleCss;
+		tile.style.oTransform = idleCss;
+		tile.style.transform = idleCss;
+
+		document.removeEventListener('mouseup',   MouseUp,   false);
+	};
+
+	// Element position finding for non webkit browsers.
+	// How will this perform on mobile?
+	var getNumericStyleProperty = function(style, prop){
+    	return parseInt(style.getPropertyValue(prop),10) ;
+	}
+
+	var elementPosition = function( e ){
+		var x = 0, y = 0;
+	    var inner = true ;
+	    do {
+	        x += e.offsetLeft;
+	        y += e.offsetTop;
+	        var style = getComputedStyle(e,null) ;
+	        var borderTop = getNumericStyleProperty(style,"border-top-width") ;
+	        var borderLeft = getNumericStyleProperty(style,"border-left-width") ;
+	        y += borderTop ;
+	        x += borderLeft ;
+	        if (inner){
+	          var paddingTop = getNumericStyleProperty(style,"padding-top") ;
+	          var paddingLeft = getNumericStyleProperty(style,"padding-left") ;
+	          y += paddingTop ;
+	          x += paddingLeft ;
+	        }
+	        inner = false ;
+	    } while (e = e.offsetParent);
+	    return { x: x, y: y };
+	}
+  
+  // Display for demo.
+  this.pushTile = pushTile;
+  this.mouseUp = MouseUp;
+	
+	// Initialize the tile.
+	initialize();
 }
 
-function open (tag) {
-    tag.style.display = "inline-block"
+// Find all tile elements
+var tileElements = document.getElementsByClassName( 'metro-tile' );
+var i;
+var tiles = [];
+
+// Apply tile functions 
+for ( i = 0; i < tileElements.length; i++ ) {
+
+	tiles.push( new Tile( tileElements[i] ) );
+
 }
 
-function close (tag) {
-    tag.style.display = "none"
+// Additional js for the codepen Demo.
+
+setTimeout(function(){tiltTile(tiles[0], 5, 10)}, 100);
+setTimeout(function(){mouseUp(tiles[0])}, 400);
+
+setTimeout(function(){tiltTile(tiles[1])}, 500);
+setTimeout(function(){mouseUp(tiles[1])}, 800);
+
+setTimeout(function(){tiltTile(tiles[2], 100, 100)}, 900);
+setTimeout(function(){mouseUp(tiles[2])}, 1200);
+
+setTimeout(function(){tiltTile(tiles[3], 200, 60)}, 1300);
+setTimeout(function(){mouseUp(tiles[3])}, 1600);
+
+setTimeout(function(){tiltTile(tiles[4])}, 1700);
+setTimeout(function(){mouseUp(tiles[4])}, 2000);
+
+setTimeout(function(){tiltTile(tiles[5],0, 0)}, 2100);
+setTimeout(function(){mouseUp(tiles[5])}, 2400);
+
+function tiltTile( tile, x, y ){
+ tile.pushTile(x,y);
+}
+function mouseUp( tile ){
+ tile.mouseUp();
 }
 
-function window_open (id) {
-    click.play()
-    brand_window.innerHTML = ""
-    app_main.innerHTML = ""
-    init_window()
 
-    let main = document.querySelector("#" + id)
 
-    let img = document.createElement("img")
-    img.src = main.childNodes[0].src
-    img.setAttribute("alt", main.childNodes[0].getAttribute("alt"))
 
-    let p = document.createElement("p")
-    p.innerText = main.childNodes[1].innerText
-    brand_window.appendChild(img)
-    brand_window.appendChild(p)
 
-    open(os_window)
-}
 
-function init_window() {
-    close(shorter)
-    maximise.onclick = e => {
-        click.play()
-        maximise_window()
-    }
-    shorter.onclick = e => {
-        click.play()
-        shorter_window()
-    }
-    cross.onclick = e => {
-        click.play()
-        close(os_window)
-        os_window
-    }
-}
 
-function maximise_window () {
-    open(shorter)
-    close(maximise)
-    window.restoreX = os_window.style.left
-    window.restoreY = os_window.style.top
-    os_window.style.top = 0
-    os_window.style.left = 0
-    os_window.style.width = "100%"
-    os_window.style.height = "100vh"
-}
 
-function shorter_window () {
-    open(maximise)
-    close(shorter)
-    os_window.style.top = window.restoreY
-    os_window.style.left = window.restoreX
-    os_window.style.width = "60%"
-    os_window.style.height = "60vh"
-}
 
-function open_menu (e, id) {
-    e.preventDefault()
-    menu.classList.add("active")
-    menu.querySelectorAll("ul li")[0].childNodes[0].onclick = () => {
-        window_open(id)
-    }
-    menu.querySelectorAll("ul li")[1].childNodes[0].onclick = () => {
-        admin_access(id)
-    }
-    menu.querySelectorAll("ul li")[2].childNodes[0].onclick = () => {
-        remove_app(id)
-    }
-    menu.style.top = e.pageY + 5 + "px"
-    menu.style.left = e.pageX + 5 + "px"
-    return false
-}
 
-function admin_access(id) {
-    con.play()
-    vex.dialog.confirm({
-        message: "Are you sure to give admin access to this app?",
-        callback: function(value) {
-            if(value) {
-                okay.play()
-                window_open(id)
-            } else {
-                no.play()
-                vex.dialog.alert({
-                    message: "Request declined"
-                })
-            }
-        }
-    })
-}
 
-function remove_app(id) {
-    con.play()
-    vex.dialog.confirm({
-        message: "Are you sure to remove this app?",
-        callback: function(value) {
-            if(value) {
-                okay.play()
-                document.querySelector("#" + id).remove()
-            } else {
-                no.play()
-                vex.dialog.alert({
-                    message: "App is not removed"
-                })
-            }
-        }
-    })
-}
 
-//Anonimus functions in Event Listeners
-window.onclick = e => {
-    if (menu.classList.contains ("active")) {
-        menu.classList.remove("active")
-    }
-}
-
-os_window.ondragend = e => {
-    let go_top = e.pageY
-    let go_left = e.pageX
-    if(go_top < 0) {
-        go_top= e
-    }
-    if(go_left < 0) {
-        go_left = 0
-    }
-    os_window.style.top = go_top + "px"
-    os_window.style.left = go_left + "px"
-}
-
-let taskbar = document.getElementById("startbutton")[0]
-let startmenu = document.getElementsByClassName("startmenu")[0]
-const os_window = document.querySelector(".br-os-window")
-
-function start(){
-    console.log("clicked");
-    if(startmenu.style.top == "-500px"){
-        startmenu.style.top = "50px";
-    }
-    else{
-        startmenu.style.top = "-500px";
-    }
-};
-
-os_window.ondragend = e => {
-    let go_top = e.pageY
-    let go_left = e.pageX
-    if(go_top < 0) {
-        go_top= e
-    }
-    if(go_left < 0) {
-        go_left = 0
-    }
-    os_window.style.top = go_top + "px"
-    os_window.style.left = go_left + "px"
-}
