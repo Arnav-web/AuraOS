@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Windows 11</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../sys/jquery/jquery-3.6.0.js"></script>
+    <script src="../../sys/jquery/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( ".br-os-window" ).draggable({
+        handle: ".window-bar"
+        });
+    } );
+    </script>
+</head>
+<body>
+    <div class="taskbar">
+        <img onclick="start()" id="startbutton" src="auraos_logo.png" width="30px" height="30px">
+    </div>
+    <div class="startmenu">
+        <div id="sidebar">
+            <div>
+                <img src="../../assets/customer_black.png" width="32px" height="32px">
+                User
+                <img src="../../assets/shutdown.png" width="32px" height="32px" style="position: absolute; right: 14px;">
+            </div>
+        </div>
+        <br>
+        <div id="list">
+            <center>
+            <div>
+                <img src="../../assets/calculator.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                AuraCalc
+            </div>
+            <div>
+                <img src="../../assets/notepad.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                AuraNotes
+            </div>
+            <div>
+                <img src="../../assets/file_explorer.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                AuraFiles
+            </div>
+            <div>
+                <img src="../../assets/info.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                System Info
+            </div>
+            <div>
+                <img src="../../assets/settings.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                Settings
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div>
+                <img src="../../assets/more_apps.png" width="32px" height="32px">
+                <div style="width: 12px;"></div>
+                All Apps
+            </div>
+            </center>
+        </div>
+        <br>
+        <input type="text" placeholder="🔍 Search On PC And Web.">
+    </div>
+    <!-- App window -->
+    <div class="br-os-window" id="app-aura-auranotes" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraNotes</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Maximize button -->
+                <button id="maximise">
+                    <img src="../../assets/maximize.png" alt="Maximise" width="16px" height="16px">
+                </button>
+                <!-- Window size restore button -->
+                <button id="shorter">
+                    <img src="../../assets/subtract.png" alt="Minimise" width="16px" height="16px">
+                </button>
+                <!-- App close button -->
+                <button id="cross">
+                    <img src="../../assets/close.png" alt="Close" width="16px" height="16px">
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main">
+            <textarea placeholder="Write Here..."></textarea>
+        </div>
+    </div>
+    <!-- App window -->
+    <div class="br-os-window" id="app-aura-auracalc" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraCalc</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Maximize button -->
+                <button id="maximise">
+                    <img src="../../assets/maximize.png" alt="Maximise" width="16px" height="16px">
+                </button>
+                <!-- Window size restore button -->
+                <button id="shorter">
+                    <img src="../../assets/subtract.png" alt="Minimise" width="16px" height="16px">
+                </button>
+                <!-- App close button -->
+                <button id="cross">
+                    <img src="../../assets/close.png" alt="Close" width="16px" height="16px">
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main">
+            <iframe src="../app.aura.auracalc/index.html" style="width: fit-content; height: fit-content; resize: both;"></iframe>
+        </div>
+    </div>
+</body>
+<script>
+    let taskbar = document.getElementById("startbutton")[0]
+    let startmenu = document.getElementsByClassName("startmenu")[0]
+    const os_window = document.querySelector(".br-os-window")
+
+    function start(){
+        console.log("clicked");
+        if(startmenu.style.top == "-500px"){
+            startmenu.style.top = "50px";
+        }
+        else{
+            startmenu.style.top = "-500px";
+        }
+    };
+
+    os_window.ondragend = e => {
+        let go_top = e.pageY
+        let go_left = e.pageX
+        if(go_top < 0) {
+            go_top= e
+        }
+        if(go_left < 0) {
+            go_left = 0
+        }
+        os_window.style.top = go_top + "px"
+        os_window.style.left = go_left + "px"
+    }
+
+</script>
+</html>

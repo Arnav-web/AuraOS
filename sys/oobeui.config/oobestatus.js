@@ -1,0 +1,1 @@
+var oobe_status = "true"
