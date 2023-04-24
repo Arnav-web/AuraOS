@@ -9,22 +9,30 @@ body{
     overflow: hidden;
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
 }
 
 .taskbar{
     width: 100%;
     padding: 4px;
     box-shadow: 20px;
-    background-color: #212121;
+    background-color: rgba(0,0,0,.7);
+    position: sticky;
+    position: absolute;
+    bottom: 0;
 }
 
 .startmenu{
     display: inline-flex;
-    background-color: #212121;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(0,0,0,.7);
     font-family: sans-serif;
     color: #fff;
+    position: sticky;
     position: absolute;
-    top: -700px;
+    bottom: -700px;
     left: 12px;
     font-size: large;
     padding: 8px;
@@ -94,9 +102,9 @@ body{
     height: 60vh;
     border: 0px;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
     overflow: hidden;
     resize: both;
     transition: 0.3s;
@@ -105,7 +113,9 @@ body{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: rgb(182, 182, 182);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(0,0,0,.8);
     padding: 10px;
     cursor: move;
     cursor: grab;
@@ -121,6 +131,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 .window .window-bar .brand img {
     width: 32px;
@@ -134,18 +145,49 @@ body{
     justify-content: center;
     align-items: center;
 }
-.window .window-bar .brand .buttons button {
+
+#cross{
     border: none;
     outline: none;
     margin-right: 5px;
-    color: #FFF;
+    background-color: red;
+    color: #F3F3F3;
     padding: 5px;
-    width: 26px;
-    height: 26px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     cursor: pointer;
     transition: 0.2s;
 }
+
+#maximise{
+    border: none;
+    outline: none;
+    margin-right: 5px;
+    background-color: #00ff00;
+    color: #F3F3F3;
+    padding: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#shorter{
+    border: none;
+    outline: none;
+    margin-right: 5px;
+    background-color: yellow;
+    color: #F3F3F3;
+    padding: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
 .window .window-bar .brand .buttons button:first-child {
     background: rgb(3, 82, 0);
 }
@@ -187,14 +229,23 @@ body{
 }
 
 .metro-tile {
-  cursor: pointer;
   background-color: deepSkyBlue;
   display: block;
   color: #fff;
-  text-transform: uppercase;
-  text-indent: 4px;
+}
+
+.metro-tile:hover{
+    border: 10px;
+    border-color: white;
 }
 
 #pane2{
     padding: 16px;
+}
+
+#clock{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    color: white;
 }

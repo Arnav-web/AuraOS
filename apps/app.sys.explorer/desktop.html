@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try Windows 11</title>
+    <title>Try AuraOS</title>
     <link rel="stylesheet" href="style.css">
     <script src="../../sys/jquery/jquery-3.6.0.js"></script>
     <script src="../../sys/jquery/jquery-ui.js"></script>
@@ -17,6 +17,249 @@
     </script>
 </head>
 <body>
+    <!-- App window -->
+    <div class="window" id="app-aura-auranotes" style="height: 320px; width: 420px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraNotes</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-aura-auranotes')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-aura-auranotes')">
+                    
+                </button>
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-aura-auranotes')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+            <textarea placeholder="Write Here..." style="height: 300px; width: 400px; resize: both;"></textarea>
+            </center>
+        </div>
+    </div>
+    <!-- App window -->
+    <div class="window" id="app-aura-auracalc" style="width: 350px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraCalc</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-aura-auracalc')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-aura-auracalc')">
+                    
+                </button>
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-aura-auracalc')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="background-color: black; overflow: hidden;">
+            <center>
+            <iframe src="../app.aura.auracalc/index.html" style="border: 0px; width: 300px; height: 400px;"></iframe>
+            </center>
+        </div>
+    </div>
+    <!-- App window -->
+    <div class="window" id="app-google-yt" style="width: 450px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">YouTube</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-google-yt')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-google-yt')">
+                    
+                </button>
+
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-google-yt')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+               <h1>How To Navigate YouTube</h1>
+               <img src="../../assets/r-click-menu.png">
+               <br>
+               Right Click Anywhere (Besides Player) To Get All Options
+               Above. Press Back On The YT Home Screen To Come Back To 
+               The Desktop. Click On The Button Below To Launch YT
+               Full Screen.
+                <br>
+                <a href="https://youtube.com" style="color: black;"><button>Launch</button></a>
+            </center>
+        </div>
+    </div>
+    <!-- App window -->
+    <div class="window" id="app-aura-auraweb" style="width: 450px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraWeb</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-aura-aurweb')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-aura-auraweb')">
+                    
+                </button>
+
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-aura-auraweb')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+               <h1>How To Navigate Browser</h1>
+               <img src="../../assets/r-click-menu.png">
+               <br>
+               Right Click Anywhere (Besides Custom R-Clicks) To Get All
+               Options Above. Press Back Till You Come Back To The Desktop.
+               Type Your URL And Click On The Button Below To Launch Website 
+               Full Screen. NOTE:PLEASE INCLUDE "HTTPS://" IN YOUR URL.
+                <br>
+                <input id="urlbox" type="url" placeholder="Type URL Here...">
+                <a onclick="window.location.href = document.getElementById('urlbox').value;" style="color: black;"><button>Launch</button></a>
+            </center>
+        </div>
+    </div>
+     <!-- App window -->
+     <div class="window" id="app-sys-sysinf" style="width: 450px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">sysinf</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-sys-sysinf')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-sys-sysinf')">
+                    
+                </button>
+
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-sys-sysinf')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+               AuraOS
+               pre-alpha0.1
+               Build No: 0.112
+               Made By:
+               Arnav
+               Github Page: <a href="https://github.com/Arnav-web">Click Here</a>
+               Note: This Is A "pre-alpha" Build. Meaning Anything
+               Can Go Wrong And System May Crash Anytime. Please
+               Do Not Run This On A Real Machine, Try It In A VM.
+            </center>
+        </div>
+    </div>
+     <!-- App window -->
+     <div class="window" id="app-aura-aurafiles" style="width: 450px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">AuraFiles</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-aura-aurafiles')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-aura-aurafiles')">
+                    
+                </button>
+
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-aura-aurafiles')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+               <a href="https://drive.google.com"><img src="../../assets/gdrive.png"></a>
+               <a href="https://dropbox.com"><img src="../../assets/dbox.png"></a>
+               <a href="https://icloud.apple.com"><img src="../../assets/icloud.png"></a>
+            </center>
+        </div>
+    </div>
+     <!-- App window -->
+     <div class="window" id="app-sys-settings" style="height: 200px; width: 450px;" draggable="true">
+        <!-- Top window -->
+        <div class="window-bar">
+            <!-- Icon -->
+            <div class="brand">Settings</div>
+            <!-- Maximize, cross etc buttons -->
+            <div class="buttons">
+                <!-- Window size restore button -->
+                <button id="shorter" onclick="minimizeApp('app-sys-settings')">
+                    
+                </button>
+                <!-- Maximize button -->
+                <button id="maximise" onclick="maximizeApp('app-sys-settings')">
+                    
+                </button>
+
+                <!-- App close button -->
+                <button id="cross" onclick="closeApp('app-sys-settings')">
+                    
+                </button>
+                <div style="width: 12px;"></div>
+            </div>
+        </div>
+        <!-- Main app -->
+        <div class="app" id="app-main" style="overflow: hidden;">
+            <center>
+              Settings App Comming Soon...
+              <button onclick="closeApp('app-sys-settings')">OK</button>
+            </center>
+        </div>
+    </div>
     <div class="startmenu">
         <div id="pane1">
         <div id="sidebar">
@@ -24,7 +267,7 @@
                 <img src="../../assets/customer_black.png" width="32px" height="32px">
                 <h4>User</h4>
                 <div style="width: 180px;"></div>
-                <img src="../../assets/shutdown.png" width="32px" height="32px">
+                <img onclick="shutdown()" src="../../assets/shutdown.png" width="32px" height="32px">
             </div>
         </div>
         <br>
@@ -40,22 +283,22 @@
                 <div style="width: 12px;"></div>
                 AuraNotes
             </div>
-            <div onclick="openApp('app-aura-auraweb');">
-                <img src="../../assets/browser.png" width="32px" height="32px">
-                <div style="width: 12px;"></div>
-                AuraWeb
-            </div>
-            <div>
+                <div onclick="openApp('app-aura-auraweb')">
+                    <img src="../../assets/browser.png" width="32px" height="32px">
+                    <div style="width: 12px;"></div>
+                    AuraWeb
+                </div>
+            <div onclick="openApp('app-aura-aurafiles')">
                 <img src="../../assets/file_explorer.png" width="32px" height="32px">
                 <div style="width: 12px;"></div>
                 AuraFiles
             </div>
-            <div>
+            <div onclick="openApp('app-sys-sysinf')">
                 <img src="../../assets/info.png" width="32px" height="32px">
                 <div style="width: 12px;"></div>
                 System Info
             </div>
-            <div>
+            <div onclick="openApp('app-sys-settings')">
                 <img src="../../assets/settings.png" width="32px" height="32px">
                 <div style="width: 12px;"></div>
                 Settings
@@ -78,23 +321,23 @@
             <br>
             <br>
             <div style="display: flex;">
-            <div onclick="openApp('app-google-yt')">
+            <div onclick="openApp(app-google-yt)">
             <a class="metro-tile" style="width: 110px; height: 110px; margin-right: 10px; float: left;">
                 <center>
                 <div style="height: 35px;"></div>
                 <img src="../../assets/yt.png" width="32px" height="32px">
                 <div style="height: 18px;"></div>
-                <span>YouTube</span>
                 </center>
+                YouTube
             </a>
             </div>
-            <a class="metro-tile" style="width: 110px; height: 110px; margin-right: 10px; float: left;">
+            <a onclick="openApp('app-aura-auraweb')" class="metro-tile" style="width: 110px; height: 110px; margin-right: 10px; float: left;">
                 <center>
                 <div style="height: 35px;"></div>
                 <img src="../../assets/browser.png" width="32px" height="32px">
                 <div style="height: 18px;"></div>
-                <span>AuraWeb</span>
                 </center>
+                AuraWeb
             </a>
             </div>
             <br>
@@ -104,16 +347,16 @@
                     <div style="height: 35px;"></div>
                     <img src="../../assets/news.png" width="32px" height="32px">
                     <div style="height: 18px;"></div>
-                    <span>News</span>
                     </center>
+                    News
                 </a>
-                <a class="metro-tile" style="width: 110px; height: 110px; margin-right: 10px; float: left;">
+                <a onclick="openApp(app.sys.settings)" class="metro-tile" style="width: 110px; height: 110px; margin-right: 10px; float: left;">
                     <center>
                     <div style="height: 35px;"></div>
                     <img src="../../assets/settings.png" width="32px" height="32px">
                     <div style="height: 18px;"></div>
-                    <span>Settings</span>
                     </center>
+                    Settings
                 </a>
                 </div>
                 <br>
@@ -123,8 +366,8 @@
                         <div style="height: 35px;"></div>
                         <img src="../../assets/notepad.png" width="32px" height="32px">
                         <div style="height: 18px;"></div>
-                        <span>AuraNotes</span>
                     </center>
+                    AuraNotes
                 </a>
                 </div>
             <br>
@@ -134,96 +377,14 @@
     </div>
     <div class="taskbar">
         <img onclick="start()" id="startbutton" src="auraos_logo.png" width="30px" height="30px">
-    </div>
-    <!-- App window -->
-    <div class="window" id="app-aura-auranotes" style="height: 320px; width: 420px;" draggable="true">
-        <!-- Top window -->
-        <div class="window-bar">
-            <!-- Icon -->
-            <div class="brand">AuraNotes</div>
-            <!-- Maximize, cross etc buttons -->
-            <div class="buttons">
-                <!-- Window size restore button -->
-                <button id="shorter">
-                    <img src="../../assets/subtract.png" alt="Minimise" width="16px" height="16px">
-                </button>
-                <!-- Maximize button -->
-                <button id="maximise" onclick="maximizeApp('app-aura-auranotes')">
-                    <img src="../../assets/maximize.png" alt="Maximise" width="16px" height="16px">
-                </button>
-                <!-- App close button -->
-                <button id="cross" onclick="closeApp('app-aura-auranotes')">
-                    <img src="../../assets/close.png" alt="Close" width="16px" height="16px">
-                </button>
-                <div style="width: 12px;"></div>
-            </div>
-        </div>
-        <!-- Main app -->
-        <div class="app" id="app-main" style="overflow: hidden;">
-            <center>
-            <textarea placeholder="Write Here..." style="height: 300px; width: 400px; resize: both;"></textarea>
-            </center>
-        </div>
-    </div>
-    <!-- App window -->
-    <div class="window" id="app-aura-auracalc" style="width: 350px;" draggable="true">
-        <!-- Top window -->
-        <div class="window-bar">
-            <!-- Icon -->
-            <div class="brand">AuraCalc</div>
-            <!-- Maximize, cross etc buttons -->
-            <div class="buttons">
-                <!-- Maximize button -->
-                <button id="maximise" onclick="maximizeApp('app-aura-auracalc')">
-                    <img src="../../assets/maximize.png" alt="Maximise" width="16px" height="16px">
-                </button>
-                <!-- Window size restore button -->
-                <button id="shorter">
-                    <img src="../../assets/subtract.png" alt="Minimise" width="16px" height="16px">
-                </button>
-                <!-- App close button -->
-                <button id="cross" onclick="closeApp('app-aura-auracalc')">
-                    <img src="../../assets/close.png" alt="Close" width="16px" height="16px">
-                </button>
-                <div style="width: 12px;"></div>
-            </div>
-        </div>
-        <!-- Main app -->
-        <div class="app" id="app-main" style="background-color: black; overflow: hidden;">
-            <center>
-            <iframe src="../app.aura.auracalc/index.html" style="border: 0px; width: 300px; height: 400px;"></iframe>
-            </center>
-        </div>
-    </div>
-    <!-- App window -->
-    <div class="window" id="app-google-yt" style="width: 350px;" draggable="true">
-        <!-- Top window -->
-        <div class="window-bar">
-            <!-- Icon -->
-            <div class="brand">Youtube</div>
-            <!-- Maximize, cross etc buttons -->
-            <div class="buttons">
-                <!-- Maximize button -->
-                <button id="maximise" onclick="maximizeApp('app-google-yt')">
-                    <img src="../../assets/maximize.png" alt="Maximise" width="16px" height="16px">
-                </button>
-                <!-- Window size restore button -->
-                <button id="shorter">
-                    <img src="../../assets/subtract.png" alt="Minimise" width="16px" height="16px">
-                </button>
-                <!-- App close button -->
-                <button id="cross" onclick="closeApp('app-google-yt')">
-                    <img src="../../assets/close.png" alt="Close" width="16px" height="16px">
-                </button>
-                <div style="width: 12px;"></div>
-            </div>
-        </div>
-        <!-- Main app -->
-        <div class="app" id="app-main" style="background-color: black; overflow: hidden;">
-            <center>
-            <webview src="https://youtube.com" style="border: 0px; width: 300px; height: 400px;"></webview>
-            </center>
-        </div>
+        <img onclick="openApp('app-aura-auracalc')" style="display: none;" class="app-aura-auracalc" src="../../assets/calculator.png" width="30px" height="30px">
+        <img onclick="openApp('app-aura-auranotes')" style="display: none;" class="app-aura-auranotes" src="../../assets/notepad.png" width="30px" height="30px">
+        <img onclick="openApp('app-aura-auraweb')" style="display: none;" class="app-aura-auraweb" src="../../assets/browser.png" width="30px" height="30px">
+        <img onclick="openApp('app-aura-aurafiles')" style="display: none;" class="app-aura-aurafiles" src="../../assets/file_explorer.png" width="30px" height="30px">
+        <img onclick="openApp('app-google-yt')" style="display: none;" class="app-google-yt" src="../../assets/yt.png" width="30px" height="30px">
+        <img onclick="openApp('app-sys-sysinf')" style="display: none;" class="app-sys-sysinf" src="../../assets/info.png" width="30px" height="30px">
+        <img onclick="openApp('app-sys-settings')" style="display: none;" class="app-sys-settings" src="../../assets/settings.png" width="30px" height="30px">
+        <div id="clock"></div>
     </div>
     <script>
         let taskbar = document.getElementById("startbutton")[0]
@@ -232,11 +393,11 @@
     
         function start(){
             console.log("clicked");
-            if(startmenu.style.top == "-700px"){
-                startmenu.style.top = "50px";
+            if(startmenu.style.bottom == "-700px"){
+                startmenu.style.bottom = "60px";
             }
             else{
-                startmenu.style.top = "-700px";
+                startmenu.style.bottom = "-700px";
             }
         };
     
@@ -255,11 +416,12 @@
     
         function closeApp(app) {
             document.getElementById(app).style.display = "none";
+            document.getElementsByClassName(app).style.display = "none";
         }
     
         function openApp(app) {
             document.getElementById(app).style.display = "flex";
-            startmenu.style.top = "-700px";
+            startmenu.style.bottom = "-700px";
         }
     
         function maximizeApp(app) {
@@ -283,6 +445,43 @@
                 document.getElementById("pane2").style.display == "none";
             }
         }
+
+        function shutdown() {
+            WshShell = new ActiveXObject("WScript.Shell");
+            WshShell.Run("c:/windows/system32/notepad.exe", 1, false);
+        }
+
+        function minimizeApp(app) {
+            document.querySelector("." + app) = "block";
+            closeApp(app);
+        }
+
+        function currentTime() {
+        let date = new Date(); 
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+        let session = "AM";
+
+        if(hh == 0){
+            hh = 12;
+        }
+        if(hh > 12){
+            hh = hh - 12;
+            session = "PM";
+        }
+
+        hh = (hh < 10) ? "0" + hh : hh;
+        mm = (mm < 10) ? "0" + mm : mm;
+        ss = (ss < 10) ? "0" + ss : ss;
+            
+        let time = hh + ":" + mm + ":" + ss + " " + session;
+
+        document.getElementById("clock").innerText = time; 
+        let t = setTimeout(function(){ currentTime() }, 1000);
+        }
+
+        currentTime();
     
     </script>
     <script src="script.js"></script>

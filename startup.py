@@ -7,7 +7,7 @@ from PyQt5.QtGui import *
 app = QApplication(sys.argv)
 
 web = QWebEngineView()
-web.load(QUrl("file:///C:/Users/Arnav/Documents/HTMLApps/AuraOS/startup.html"))
+web.load(QUrl("file:///C:/auraos/startup.html"))
 web.setGeometry(0, 0, 1366, 768)
 web.setWindowFlag(Qt.FramelessWindowHint)
 web.show()
