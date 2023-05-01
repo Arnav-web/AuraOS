@@ -1,0 +1,84 @@
+body {
+    background-color: black;
+    font-family: Helvetica ,Arial, sans-serif;
+    font-weight: 50;
+    
+}
+h1, h2, a {
+    color: white;
+    text-align: center;
+}
+h2 {
+    margin-top: 50px;
+}
+#container {
+    margin: auto;
+    margin-top: 50px;
+    font-size: 50px;
+    display: grid;
+    width: 228px;
+    height: 320px;
+    border-radius: 5px;
+    font-size: 0px;
+    
+}
+#display {
+    background-color: rgb(43,41,46);
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 80px;
+    font-size: 21px;
+    color: white;
+    text-align: right;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 100px;
+}
+button {
+    width: 57px;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    border-color: rgb(43,40,46);
+    background-color: rgb(95,93,97);
+    color: white;
+    font-size: 21px;
+    
+}
+
+
+
+#rowOne :nth-child(1) {
+    background-color: rgb(73,65,65);
+}
+#rowOne :nth-child(2) {
+    background-color: rgb(73,65,65);
+
+}
+#rowOne :nth-child(3) {
+    background-color: rgb(73,65,65);
+
+}
+#rowOne :last-child {
+    background-color: rgb(253,158,43);
+}
+#rowTwo :last-child {
+    background-color: rgb(253,158,43);
+}
+#rowThree :last-child {
+    background-color: rgb(253,158,43);
+}
+#rowFour :last-child {
+    background-color: rgb(253,158,43);
+}
+#rowFive :first-child {
+    width: 114px;
+    border-bottom-left-radius: 5px;
+    text-align: left;
+    padding-left: 21px;
+}
+#rowFive :last-child {
+    background-color: rgb(253,158,43);
+    border-bottom-right-radius: 5px;
+}
