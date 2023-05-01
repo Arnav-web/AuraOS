@@ -1,3 +1,0 @@
-@echo off
-echo Shutting Down...
-shutdown -s -t 00
